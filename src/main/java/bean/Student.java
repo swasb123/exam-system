@@ -17,12 +17,13 @@ public class Student {
 	private String address;
 	private int contact;
 	private String course;
+	private double fees;
 	private String password;
 	private String admissionDate;
 	
 	public Student() {}
 
-	public Student(String userName, String name, String address, int contact, String course, String password,
+	public Student(String userName, String name, String address, int contact, String course, double fees, String password,
 			String admissionDate) {
 		super();
 		this.userName = userName;
@@ -30,6 +31,7 @@ public class Student {
 		this.address = address;
 		this.contact = contact;
 		this.course = course;
+		this.fees = fees;
 		this.password = password;
 		this.admissionDate = admissionDate;
 	}
@@ -81,6 +83,14 @@ public class Student {
 	public void setCourse(String course) {
 		this.course = course;
 	}
+	
+	public double getFees() {
+		return fees;
+	}
+
+	public void setFees(double course) {
+		this.fees = fees;
+	}
 
 	public String getPassword() {
 		return password;
@@ -97,5 +107,6 @@ public class Student {
 	public void setAdmissionDate(String admissionDate) {
 		this.admissionDate = admissionDate;
 	}
+
 
 }

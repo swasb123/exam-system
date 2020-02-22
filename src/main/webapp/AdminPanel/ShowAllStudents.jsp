@@ -35,6 +35,7 @@
 					<th>Contact</th>
 					<th>Admission Date</th>
 					<th>Course</th>
+					<th>Fees</th>
 					<th>Username</th>
 					<th>Password</th>
 					<th>Update</th>
@@ -55,6 +56,7 @@
 			<td><%= student.getContact() %></td>
 			<td><%= student.getAdmissionDate() %></td>
 			<td><%= student.getCourse() %></td>
+			<td><%= student.getFees() %></td>
 			<td><%= student.getUserName() %></td>
 			<td><%= student.getPassword() %></td>
 			<td><a class="update" href="StudentControl/UpdateStudent.jsp?id=<%= student.getS_id() %>">Update</a></td>

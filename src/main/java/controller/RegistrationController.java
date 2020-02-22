@@ -26,6 +26,7 @@ public class RegistrationController extends HttpServlet {
 		String address;
 		int contact;
 		String course;
+		double fees;
 		String password;
 		String admissionDate;
 
@@ -34,10 +35,11 @@ public class RegistrationController extends HttpServlet {
 		contact = Integer.parseInt(request.getParameter("contact"));
 		admissionDate = request.getParameter("admissionDate");
 		course = request.getParameter("course");
+		fees = Double.parseDouble(request.getParameter("fees"));
 		userName = request.getParameter("userName");
 		password = request.getParameter("password");
 
-		Student student = new Student(userName, name, address, contact, course, password, admissionDate);
+		Student student = new Student(userName, name, address, contact, course, fees, password, admissionDate);
 		StudentDeclarationDAO studentDeclarationDAO = new StudentDeclarationDAOImpl();
 		long id = studentDeclarationDAO.insertStudent(student);
 		out.println(id);

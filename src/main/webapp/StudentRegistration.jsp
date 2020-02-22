@@ -36,6 +36,11 @@
 					name="course">
 			</div>
 			<div class="form-group">
+				<label for="fees">Fees:</label> <input type="text"
+					class="form-control" id="course" placeholder="Enter fees"
+					name="fees">
+			</div>
+			<div class="form-group">
 				<label for="Username">Username:</label> <input type="text"
 					class="form-control" id="userName" placeholder="Enter username"
 					name="userName">
