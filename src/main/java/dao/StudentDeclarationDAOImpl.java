@@ -36,7 +36,16 @@ public class StudentDeclarationDAOImpl implements StudentDeclarationDAO {
 	}
 
 	public long updateStudent(long id, Student student) {
-		// TODO Auto-generated method stub
+		transaction = session.beginTransaction();
+		student.setS_id(id);
+		try {
+			session.update(student);
+			transaction.commit();
+			return id;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		return 0;
 	}
 
@@ -63,7 +72,10 @@ public class StudentDeclarationDAOImpl implements StudentDeclarationDAO {
 	}
 
 	public Student getStudent(long id) {
-		// TODO Auto-generated method stub
+		Student student = session.get(Student.class, id);
+		if (student != null) {
+			return student;
+		}
 		return null;
 	}
 

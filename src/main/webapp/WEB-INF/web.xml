@@ -11,6 +11,10 @@
 		<servlet-name>RegistrationController</servlet-name>
 		<servlet-class>controller.RegistrationController</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>StudentUpdateController</servlet-name>
+		<servlet-class>controller.UpdateController</servlet-class>
+	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>Test</servlet-name>
@@ -19,6 +23,10 @@
 	<servlet-mapping>
 		<servlet-name>RegistrationController</servlet-name>
 		<url-pattern>/RegistrationController</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>StudentUpdateController</servlet-name>
+		<url-pattern>/StudentUpdateController</url-pattern>
 	</servlet-mapping>
 </web-app>
 
