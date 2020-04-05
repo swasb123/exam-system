@@ -15,15 +15,40 @@
 	border-radius: 4px;
 	padding: 5px;
 }
+
 .update {
 	border: solid 2px green;
 }
+
 .delete {
 	border: solid 2px red;
 }
 </style>
 </head>
 <body>
+<div>
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">WebSiteName</a>
+		</div>
+		<ul class="nav navbar-nav">
+			<li class="active"><a href="#">Home</a></li>
+			<li><a href="#">Page 1</a></li>
+			<li><a href="#">Page 2</a></li>
+		</ul>
+		<form class="navbar-form navbar-right" action="/action_page.php">
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Search"
+					name="search">
+			</div>
+			<button type="submit" class="btn btn-default">Submit</button>
+		</form>
+	</div>
+	</nav>
+</div>
+
+	
 	<div class="container">
 		<h2>Student Data List</h2>
 		<table class="table table-striped">
@@ -44,27 +69,29 @@
 			</thead>
 			<%
 				StudentDeclarationDAOImpl studentDeclarationDAOImpl = new StudentDeclarationDAOImpl();
-				List list = studentDeclarationDAOImpl.getAllStudent();
-				ListIterator lit = list.listIterator();
-				while (lit.hasNext()) {
-					Student student = (Student) lit.next();
+			List list = studentDeclarationDAOImpl.getAllStudent();
+			ListIterator lit = list.listIterator();
+			while (lit.hasNext()) {
+				Student student = (Student) lit.next();
 			%>
 			<tr>
-			<td><%= student.getS_id() %></td>
-			<td><%= student.getName() %></td>
-			<td><%= student.getAddress() %></td>
-			<td><%= student.getContact() %></td>
-			<td><%= student.getAdmissionDate() %></td>
-			<td><%= student.getCourse() %></td>
-			<td><%= student.getFees() %></td>
-			<td><%= student.getUserName() %></td>
-			<td><%= student.getPassword() %></td>
-			<td><a class="update" href="StudentControl/UpdateStudent.jsp?id=<%= student.getS_id() %>">Update</a></td>
-			<td><a class="delete" href="StudentControl/DeleteStudent.jsp?id=<%= student.getS_id() %>">Delete</a></td>
+				<td><%=student.getS_id()%></td>
+				<td><%=student.getName()%></td>
+				<td><%=student.getAddress()%></td>
+				<td><%=student.getContact()%></td>
+				<td><%=student.getAdmissionDate()%></td>
+				<td><%=student.getCourse()%></td>
+				<td><%=student.getFees()%></td>
+				<td><%=student.getUserName()%></td>
+				<td><%=student.getPassword()%></td>
+				<td><a class="update"
+					href="StudentControl/UpdateStudent.jsp?id=<%=student.getS_id()%>">Update</a></td>
+				<td><a class="delete"
+					href="StudentControl/DeleteStudent.jsp?id=<%=student.getS_id()%>">Delete</a></td>
 			</tr>
 			<%
 				}
-			%>			
+			%>
 		</table>
 	</div>
 </body>
