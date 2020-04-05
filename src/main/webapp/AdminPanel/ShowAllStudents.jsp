@@ -26,8 +26,7 @@
 </style>
 </head>
 <body>
-<div>
-<nav class="navbar navbar-inverse">
+	<nav class="navbar navbar-inverse">
 	<div class="container-fluid">
 		<div class="navbar-header">
 			<a class="navbar-brand" href="#">WebSiteName</a>
@@ -37,18 +36,79 @@
 			<li><a href="#">Page 1</a></li>
 			<li><a href="#">Page 2</a></li>
 		</ul>
-		<form class="navbar-form navbar-right" action="/action_page.php">
+		<form class="navbar-form navbar-right" action="#" method="post">
 			<div class="form-group">
 				<input type="text" class="form-control" placeholder="Search"
 					name="search">
 			</div>
-			<button type="submit" class="btn btn-default">Submit</button>
+			<button type="submit" class="btn btn-default" name="submit_serach">
+				<i class="glyphicon glyphicon-search"></i>
+			</button>
+
 		</form>
 	</div>
 	</nav>
-</div>
 
-	
+	<!-- Search Data start -->
+
+	<%
+		if (request.getParameter("submit_serach") != null) {
+		String searchString = request.getParameter("search");
+	%>
+	<hr />
+
+	<div class="container">
+	<h2>Student Data List</h2>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Address</th>
+				<th>Contact</th>
+				<th>Admission Date</th>
+				<th>Course</th>
+				<th>Fees</th>
+				<th>Username</th>
+				<th>Password</th>
+				<th>Update</th>
+				<th>Delete</th>
+			</tr>
+		</thead>
+		<%
+			StudentDeclarationDAOImpl studentDeclarationDAOImpl = new StudentDeclarationDAOImpl();
+		List<Student> list = studentDeclarationDAOImpl.getByName(searchString);
+		ListIterator<Student> lits = list.listIterator();
+		while (lits.hasNext()) {
+			Student student = (Student) lits.next();
+		%>
+		<tr>
+			<td><%=student.getS_id()%></td>
+			<td><%=student.getName()%></td>
+			<td><%=student.getAddress()%></td>
+			<td><%=student.getContact()%></td>
+			<td><%=student.getAdmissionDate()%></td>
+			<td><%=student.getCourse()%></td>
+			<td><%=student.getFees()%></td>
+			<td><%=student.getUserName()%></td>
+			<td><%=student.getPassword()%></td>
+			<td><a class="update"
+				href="StudentControl/UpdateStudent.jsp?id=<%=student.getS_id()%>">Update</a></td>
+			<td><a class="delete"
+				href="StudentControl/DeleteStudent.jsp?id=<%=student.getS_id()%>">Delete</a></td>
+		</tr>
+		<%
+			}
+		%>
+	</table>
+
+	</div>
+	<hr />
+	<%
+		}
+	%>
+	<!-- Search Data start -->
+
 	<div class="container">
 		<h2>Student Data List</h2>
 		<table class="table table-striped">
@@ -69,8 +129,8 @@
 			</thead>
 			<%
 				StudentDeclarationDAOImpl studentDeclarationDAOImpl = new StudentDeclarationDAOImpl();
-			List list = studentDeclarationDAOImpl.getAllStudent();
-			ListIterator lit = list.listIterator();
+			List<Student> list = studentDeclarationDAOImpl.getAllStudent();
+			ListIterator<Student> lit = list.listIterator();
 			while (lit.hasNext()) {
 				Student student = (Student) lit.next();
 			%>

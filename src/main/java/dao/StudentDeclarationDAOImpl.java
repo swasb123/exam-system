@@ -3,10 +3,12 @@ package dao;
 import java.util.List;
 import java.util.ListIterator;
 
+import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.query.Query;
+import org.hibernate.criterion.Restrictions;
 
 import bean.Student;
 
@@ -72,7 +74,7 @@ public class StudentDeclarationDAOImpl implements StudentDeclarationDAO {
 	}
 
 	public Student getStudent(long id) {
-		Student student = session.get(Student.class, id);
+		Student student = (Student) session.get(Student.class, id);
 		if (student != null) {
 			return student;
 		}
@@ -96,9 +98,13 @@ public class StudentDeclarationDAOImpl implements StudentDeclarationDAO {
 			return null;
 		}
 	}
-
 	public List<Student> getByName(String name) {
-		// TODO Auto-generated method stub
+		Criteria criteria = session.createCriteria(Student.class);
+		criteria.add(Restrictions.like("name", "%" + name + "%"));
+		List<Student> sudentList = criteria.list();
+		if (sudentList.size() > 0) {
+			return sudentList;
+		}
 		return null;
 	}
 
